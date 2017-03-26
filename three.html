@@ -1,0 +1,81 @@
+<html>
+	<head>
+		<title>My first three.js app</title>
+
+ 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" integrity="sha256-t2/7smZfgrST4FS1DT0bs/KotCM74XlcqZN5Vu7xlrw=" crossorigin="anonymous" />
+		<style>
+			body { margin: 0; }
+			canvas { width: 100%; height: 100% }
+			#container {
+				position: relative;
+			}
+			#three {
+				position: absolute;
+			}
+			#headerText {
+			  position: absolute;
+			  padding-left: 10px;
+			}
+			h1 {
+			  font-size: 9vmax;
+			  color: #F7EBE8;
+			}
+			h2 {
+			  font-size: 3vmax;
+				color: #F7EBE8;
+			}
+			</style>
+		 	</head>
+	<body>
+		<div id="container">
+			<div id="three"></div>
+	    <div id="headerText">
+		      <h1>I'm Sawyer</h1>
+		      <h2>I write software in Seattle, WA</h2>
+		  </div>
+		</div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/84/three.min.js"></script>
+		<script>
+			var scene = new THREE.Scene();
+			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
+
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			renderer.setClearColor(0xFFA987);
+			document.getElementById('three').appendChild( renderer.domElement );
+
+			var geometry = new THREE.IcosahedronGeometry(1, 0);
+			var material = new THREE.MeshPhongMaterial( { color: 0x554971, shading: THREE.FlatShading, shininess: 0 } );
+			var wireframeMat = new THREE.MeshBasicMaterial( { color: 0x000000, shading: THREE.FlatShading, wireframe: true, transparent: true } );
+
+			var cube = new THREE.SceneUtils.createMultiMaterialObject( geometry, [material, wireframeMat] );
+			scene.add( cube );
+			var light = new THREE.PointLight( 0xffffff );
+			light.position.set( 10, 0, 5);
+			scene.add( light );
+
+			camera.position.z = 5;
+
+			var render = function () {
+				requestAnimationFrame( render );
+
+				cube.rotation.x += 0.01;
+				cube.rotation.y += 0.01;
+
+				renderer.render(scene, camera);
+			};
+
+			function onWindowResize() {
+				windowHalfX = window.innerWidth / 2;
+				windowHalfY = window.innerHeight / 2;
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+				renderer.setSize( window.innerWidth, window.innerHeight );
+			}
+			window.addEventListener( 'resize', onWindowResize, false );
+
+			render();
+		</script>
+	</body>
+</html>

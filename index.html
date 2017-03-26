@@ -1,0 +1,59 @@
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" integrity="sha256-t2/7smZfgrST4FS1DT0bs/KotCM74XlcqZN5Vu7xlrw=" crossorigin="anonymous" />
+</head>
+<body>
+<style>
+#header {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  color: white;
+}
+#headerImg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url(static/sawyer.jpg) no-repeat top left;
+  background-size: auto 100%;
+  filter: grayscale(1);
+  width: 100%;
+  height: 100%;
+}
+#headerText {
+  position: absolute;
+  padding-left: 10px;
+}
+h1 {
+  font-size: 10vmax;
+  color: white;
+}
+h2 {
+  font-size: 3vmax;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(85, 73, 113, 0.5);
+  width: 100%;
+  height: 100%;
+}
+</style>
+<div>
+  <div id="header">
+    <div id="headerImg" ></div>
+    <div class="overlay"></div>
+    <div id="headerText">
+      <h1>I'm Sawyer</h1>
+      <h2>I write software in Seattle, WA</h2>
+    </div>
+  </div>
+</div>
+<div>
+</div>
+</div>
+
+</body>
+</html>
